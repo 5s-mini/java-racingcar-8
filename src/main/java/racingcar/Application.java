@@ -13,6 +13,8 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String attemptsInput = Console.readLine();
         int attempts = attemptsNum(attemptsInput);
+
+        List<Integer> carPositions = initPositions(names.size());
     }
 
     private static List<String> carNames(String carInput) {
@@ -68,5 +70,14 @@ public class Application {
         }
 
         return attempts;
+    }
+
+    private static List<Integer> initPositions(int num) {
+        List<Integer> positions = new ArrayList<>();
+        for (int i = 0; i < num; i++) {
+            positions.add(0);
+        }
+
+        return positions;
     }
 }

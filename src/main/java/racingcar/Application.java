@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class Application {
         int attempts = attemptsNum(attemptsInput);
 
         List<Integer> carPositions = initPositions(names.size());
+        startRace(names, carPositions, attempts);
     }
 
     private static List<String> carNames(String carInput) {
@@ -79,5 +81,20 @@ public class Application {
         }
 
         return positions;
+    }
+
+    private static void startRace(List<String> names, List<Integer> carPositions, int attempts) {
+        for (int round = 0; round < attempts; round++) {
+            for (int i = 0; i < names.size(); i++) {
+                int random = Randoms.pickNumberInRange(0, 9);
+                if (move(random)) {
+                    carPositions.set(i, carPositions.get(i) + 1);
+                }
+            }
+        }
+    }
+
+    private static boolean move(int random) {
+        return random >= 4;
     }
 }

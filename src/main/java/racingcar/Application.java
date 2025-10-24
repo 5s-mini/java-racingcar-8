@@ -91,10 +91,23 @@ public class Application {
                     carPositions.set(i, carPositions.get(i) + 1);
                 }
             }
+
+            System.out.println();
+            printRoundResult(names, carPositions);
         }
     }
 
     private static boolean move(int random) {
         return random >= 4;
+    }
+
+    private static void printRoundResult(List<String> names, List<Integer> carPositions) {
+        for (int i = 0; i < names.size(); i++) {
+            String name = names.get(i);
+            int position = carPositions.get(i);
+            System.out.println(name + " : " + "-".repeat(position));
+        }
+
+        System.out.println();
     }
 }

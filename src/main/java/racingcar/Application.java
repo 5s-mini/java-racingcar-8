@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
@@ -17,6 +18,9 @@ public class Application {
 
         List<Integer> carPositions = initPositions(names.size());
         startRace(names, carPositions, attempts);
+
+        List<String> winners = findWinners(names, carPositions);
+        printWinners(winners);
     }
 
     private static List<String> carNames(String carInput) {
@@ -109,5 +113,22 @@ public class Application {
         }
 
         System.out.println();
+    }
+
+    private static List<String> findWinners(List<String> names, List<Integer> carPositions) {
+        int maxPosition = Collections.max(carPositions);
+        List <String> winners = new ArrayList<>();
+        for (int i = 0; i < names.size(); i++) {
+            if (carPositions.get(i) == maxPosition) {
+                winners.add(names.get(i));
+            }
+        }
+
+        return winners;
+    }
+
+    private static void printWinners(List<String> winners) {
+        String winner = String.join(", ", winners);
+        System.out.println("최종 우승자 : " + winner);
     }
 }
